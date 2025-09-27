@@ -2,8 +2,9 @@ package platform
 
 import (
 	"context"
-	"github.com/prometheus/client_golang/prometheus"
 	"net/http"
+
+	"github.com/prometheus/client_golang/prometheus"
 )
 
 type Listener interface {
@@ -24,7 +25,6 @@ type Checker interface {
 	Check() (interface{}, error)
 }
 
-type Fields map[string]any
 type Logger interface {
 	WithField(ctx context.Context, key string, value any) context.Context
 	WithError(ctx context.Context, err error) context.Context
