@@ -27,14 +27,8 @@ type Checker interface {
 type Fields map[string]any
 type Logger interface {
 	WithField(ctx context.Context, key string, value any) context.Context
-	WithFields(ctx context.Context, fields Fields) context.Context
 	WithError(ctx context.Context, err error) context.Context
 
-	Debug(ctx context.Context, args ...any)
 	Info(ctx context.Context, args ...any)
-	Print(ctx context.Context, args ...any)
 	Warn(ctx context.Context, args ...any)
-	Error(ctx context.Context, args ...any)
-	Fatal(ctx context.Context, args ...any)
-	Panic(ctx context.Context, args ...any)
 }
