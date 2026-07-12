@@ -20,8 +20,12 @@ func Listen(ctx context.Context, listener Listener, opts ...Option) error {
 }
 
 func listen(ctx context.Context, listener Listener, o options) error {
-	probeHandler := readinessProbe(o.checkers, o.logger)
-	o.mux.Handle(readinessProbeEndpoint, probeHandler)
+	if !o.skipReadinessProbe {
+		probeHandler := readinessProbe(o.checkers, o.logger)
+		o.mux.Handle(readinessProbeEndpoint, probeHandler)
+	}
+
+	o.mux.Handle(livenessProbeEndpoint, livenessProbe())
 
 	if o.logger != nil {
 		o.logger.Info(ctx, fmt.Sprintf("start server on :%d", o.port))

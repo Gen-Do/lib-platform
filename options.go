@@ -1,10 +1,11 @@
 package platform
 
 type options struct {
-	port     int
-	mux      Mux
-	checkers map[string]Checker
-	logger   Logger
+	port               int
+	mux                Mux
+	checkers           map[string]Checker
+	logger             Logger
+	skipReadinessProbe bool
 
 	listener Listener
 

@@ -11,6 +11,7 @@ const (
 	defaultPort = 8080
 
 	readinessProbeEndpoint = "/health"
+	livenessProbeEndpoint  = "/livez"
 
 	ExitCodeSuccess = 0
 	ExitCodeFailure = 1
